@@ -19,7 +19,7 @@ variable "instance_type" {
 }
 
 variable "ec2_user" {
-    default = "Adhi@2209"
+    description = "EC2 SSH key name or username"
 }
 
 variable "port1" {
