@@ -19,7 +19,7 @@ variable "instance_type" {
 }
 
 variable "ec2_user" {
-    default = ${{ secrets.EC2_User }}
+    default = "Adhi@2209"
 }
 
 variable "port1" {
