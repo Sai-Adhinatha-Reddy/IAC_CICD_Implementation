@@ -1,3 +1,7 @@
+variable "region" {
+  default = "us-east-1"
+}
+
 variable "vpc_cidr_block" {
     default = "10.0.0.0/16"
 }
@@ -7,7 +11,7 @@ variable "public_subnet_cidr_block" {
 }
 
 variable "ec2_instance_name" {
-    default = "nginx-instance"
+    default = "CICD_Assignment_4"
 }
 
 variable "instance_type" {
@@ -15,11 +19,7 @@ variable "instance_type" {
 }
 
 variable "ec2_user" {
-    default = "Adhi@2209"
-}
-
-variable "region" {
-  default     = "us-east-1"
+    default = ${{ secrets.EC2_User }}
 }
 
 variable "port1" {
@@ -41,25 +41,4 @@ variable "vpc_name" {
 
 variable "public-subnet-name" {
   default     = "pub-sub-1"
-}
-
-variable "private-subnet-name" {
-  default     = "prv-sub-1"
-}
-
-variable "route-table-name" {
-  default     = "dev-rt-1"
-}
-
-variable "internet-gateway-name" {
-  default     = "dev-igw-1"
-}
-
-#Tags
-variable "tag_env" {
-  default     = "dev"
-}
-
-variable "tag_project" {
-  default     = "smart-store"
 }

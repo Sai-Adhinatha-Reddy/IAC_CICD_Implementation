@@ -1,11 +1,13 @@
 provider "aws" {
     region = var.region
 }
+
 # https://registry.terraform.io/modules/claranet/vpc-modules/aws/latest/submodules/public-subnets?tab=outputs
 module "vpc" {
   source  = "claranet/vpc-modules/aws//modules/vpc"
   version = "1.1.1"
-
+  
+#  name = var.vpc_name
   cidr_block           = var.vpc_cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -14,7 +16,8 @@ module "vpc" {
 module "public_subnets" {
   source  = "claranet/vpc-modules/aws//modules/public-subnets"
   version = "1.1.1"
-
+  
+#  name = var.public-subnet-name
   vpc_id                  = module.vpc.vpc_id
   gateway_id              = module.vpc.internet_gateway_id
   map_public_ip_on_launch = true
@@ -24,12 +27,11 @@ module "public_subnets" {
 }
 
 # https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws/latest
-module "ec2_instance" {
+module "ec2-instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.5.0"
+  version = "5.8.0"
 
-  name = var.ec2_instance_name
-
+ # name = var.ec2_instance_name
   instance_type          = var.instance_type
   key_name               = var.ec2_user
   monitoring             = true
@@ -40,7 +42,7 @@ module "ec2_instance" {
 user_data = file("userdata.tpl")
 
   tags = {
-    Name   = "dev_instance"
+    Name   = var.ec2_instance_name
     Environment = "dev"
   }
 }
