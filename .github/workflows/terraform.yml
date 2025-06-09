@@ -43,9 +43,7 @@ jobs:
 
     - name: Terraform Apply (auto-approve)
       if: github.ref == 'refs/heads/main'
-      env:
-        TF_VAR_ec2_user: ${{ secrets.EC2_USER }}
       run: terraform apply -auto-approve tfplan
       
-#    - name: Terraform destroy
-#      run: terraform destrou -auto-approve
+    - name: Terraform destroy
+      run: terraform destroy -auto-approve
