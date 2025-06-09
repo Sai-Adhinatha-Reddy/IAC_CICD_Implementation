@@ -32,8 +32,8 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
-  #  - name: Terraform Format Check
-  #    run: terraform fmt -check
+    - name: Terraform Format Check
+      run: terraform fmt -check
 
     - name: Terraform Validate
       run: terraform validate
@@ -46,3 +46,6 @@ jobs:
       env:
         TF_VAR_ec2_user: ${{ secrets.EC2_USER }}
       run: terraform apply -auto-approve tfplan
+      
+#    - name: Terraform destroy
+#      run: terraform destrou -auto-approve

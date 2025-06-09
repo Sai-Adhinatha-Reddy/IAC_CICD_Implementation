@@ -3,31 +3,31 @@ variable "region" {
 }
 
 variable "vpc_cidr_block" {
-    default = "10.0.0.0/16"
+  default = "10.0.0.0/16"
 }
 
 variable "public_subnet_cidr_block" {
-    default = "10.0.1.0/24"
+  default = "10.0.1.0/24"
 }
 
 variable "ec2_instance_name" {
-    default = "CICD_Assignment_4"
+  default = "CICD_Assignment_4"
 }
 
 variable "instance_type" {
-    default = "t2.micro"
+  default = "t2.micro"
 }
 
 variable "ec2_user" {
-    description = "EC2 SSH key name or username"
+  description = "EC2 SSH key name or username"
 }
 
 variable "port1" {
-    default = 22
+  default = 22
 }
 
 variable "port2" {
-    default = 80
+  default = 80
 }
 
 variable "cidr" {
@@ -36,9 +36,9 @@ variable "cidr" {
 }
 
 variable "vpc_name" {
-  default     = "dev-vpc"
+  default = "dev-vpc"
 }
 
 variable "public-subnet-name" {
-  default     = "pub-sub-1"
+  default = "pub-sub-1"
 }
