@@ -10,6 +10,8 @@ jobs:
   terraform:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_ec2_user: ${{ secrets.EC2_USER }}
 
     steps:
     - name: Checkout repository
